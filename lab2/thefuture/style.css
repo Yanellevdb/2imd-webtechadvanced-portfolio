@@ -1,0 +1,30 @@
+* { 
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+}
+
+.gridje  {
+    display: grid;
+    background-color: hotpink;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 1fr 100% 1fr;
+    gap: 15px;
+    padding: 30px;
+    align-items: center;
+
+}
+
+#broken {
+    background-color: aqua;
+    grid-template-rows: 100%;
+}
+
+#cloud {
+    background-color: yellow;
+}
