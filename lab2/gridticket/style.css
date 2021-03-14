@@ -99,7 +99,7 @@
     }
 
     .frustrations {
-        display: inline-block;
+        display: block;
         border: 1px;
         border-color: black;
         border-style: solid;
