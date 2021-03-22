@@ -10,6 +10,13 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+const routeMessages = require('./routers/api/v1/messages');
+const pug = require('pug');
+app.set("view engine", "pug");
+
+app.use("/api/v1/messages", routeMessages);
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
