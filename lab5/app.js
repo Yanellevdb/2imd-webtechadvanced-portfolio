@@ -10,6 +10,8 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+const port = 5500;
+
 const routeMessages = require('./routers/api/v1/messages');
 const pug = require('pug');
 app.set("view engine", "pug");
