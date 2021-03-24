@@ -30,12 +30,12 @@ const remove= (req, res) => {
 }
 
 const getAll= (req, res) => {
-    let user= req.query.user;
     if(req.query.user){
+        let user= req.query.user;
         res.json({
             status: "success",
             message:`GETTING messages from username ${user}`
-        })
+        });
         }
     else{
     res.json({
@@ -48,5 +48,5 @@ const getAll= (req, res) => {
 module.exports.getId= getId;
 module.exports.post= post;
 module.exports.update= update; 
-module.exports.remove=remove;
+module.exports.remove= remove;
 module.exports.getAll= getAll;

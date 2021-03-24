@@ -3,21 +3,16 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const apiTodosRouter= require("./routes/api/v1/todos");
+
+const port= 3000;
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-var app = express();
+const app = express();
 
-const port = 5500;
-
-const routeMessages = require('./routers/api/v1/messages');
+const routeMessages = require('./routes/api/v1/messages');
 const pug = require('pug');
-app.set("view engine", "pug");
-
-app.use("/api/v1/messages", routeMessages);
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -31,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/api/v1/messages', routeMessages);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
