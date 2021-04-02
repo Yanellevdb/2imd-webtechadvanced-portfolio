@@ -24,6 +24,8 @@ class Note {
       // HINT🤩
       // localStorage only supports strings, not arrays
       // if you want to store arrays, look at JSON.parse and JSON.stringify
+      localStorage.setItem('', newNote);
+      const parseData= JSON.parse(newNote);
 
     }
   
@@ -55,6 +57,7 @@ class Note {
     loadNotesFromStorage() {
       // HINT🤩
       // load all notes from storage here and add them to the screen
+      localStorage.getItem(this.txtTodo);
     }
   
     createNote(e) {
@@ -76,7 +79,7 @@ class Note {
   
     reset() {
       // this function should reset the form / clear the text field
-      document.querySelector("#taskInput").reset;
+      localStorage.removeItem(this.note)
     }
   }
   
