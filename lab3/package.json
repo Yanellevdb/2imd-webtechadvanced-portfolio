@@ -1,5 +1,5 @@
 {
-  "name": "lab3-todo-app",
+  "name": "lab3",
   "version": "1.0.0",
   "description": "",
   "main": "index.html",
@@ -23,6 +23,5 @@
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.13.12",
     "serve": "^11.2.0"
-  },
-    "presets": ["@babel/preset-env"]
+  }
 }
