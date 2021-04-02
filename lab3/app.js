@@ -2,7 +2,7 @@ class Note {
     constructor(title) {
       this.title = title;
       // HINT🤩 this.element = this.createElement(title);
-      this.element= this.createElement(this.title);
+      this.element= this.createElement(title);
     
     }
   
@@ -10,19 +10,21 @@ class Note {
       let newNote = document.createElement("li");
   
       // HINT🤩 newNote.addEventListener('click', this.remove.bind(newNote));
-  
+      newNote.addEventListener('click', this.remove.bind(newNote));
       return newNote;
     }
   
     add() {
       // HINT🤩
       // this function should append the note to the screen somehow
+      document.querySelector("#taskinput").appendChild(this.element);
     }
   
     saveToStorage() {
       // HINT🤩
       // localStorage only supports strings, not arrays
       // if you want to store arrays, look at JSON.parse and JSON.stringify
+
     }
   
     remove() {
@@ -30,6 +32,7 @@ class Note {
       // in this function, 'this' will refer to the current note element
       // .removeChild(this)
       // remove the item from screen and from localstorage
+      document.querySelector(this.newNote).removeChild(this);
     }
   }
   
@@ -44,6 +47,9 @@ class Note {
       // read up on .bind() -> we need to pass the current meaning of this to the eventListener
       // when the app loads, we can show previously saved noted from localstorage
       // this.loadNotesFromStorage();
+      this.txtTodo= this.newNote;
+      this.txtTodo.addEventListener('keypress', this.createNote.bind(this.input));
+      this.loadNotesFromStorage();
     }
   
     loadNotesFromStorage() {
@@ -58,10 +64,16 @@ class Note {
       // note.saveToStorage();
       // clear the text field with .reset in this class
       // if (e.key === "Enter")
+      note.add();
+      note.saveToStorage();
+      if (e.key === 'Enter') {
+        document.querySelector("#taskInput").reset;
+      }
     }
   
     reset() {
       // this function should reset the form / clear the text field
+      document.querySelector("#taskInput").reset;
     }
   }
   
