@@ -24,9 +24,16 @@ class Note {
       // HINT🤩
       // localStorage only supports strings, not arrays
       // if you want to store arrays, look at JSON.parse and JSON.stringify
-      localStorage.setItem('', newNote);
-      const parseData= JSON.parse(newNote);
+      if (localStorage.getItem('todoLijst') === null) {
+        localStorage.setItem('todoLijst', JSON.stringify([this.title]));
+      }
 
+      else {
+        let todo= JSON.parse(localStorage.getItem('todoLijst'));
+        todo.push(this.title);
+        localStorage.setItem('todoLijst', JSON.stringify(todo));
+        console.log(todo);
+      }
     }
   
     remove() {
@@ -34,7 +41,6 @@ class Note {
       // in this function, 'this' will refer to the current note element
       // .removeChild(this)
       // remove the item from screen and from localstorage
-      document.querySelector(this.newNote).removeChild(this);
     }
   }
   
@@ -73,7 +79,7 @@ class Note {
         note.saveToStorage();
         document.querySelector("#taskInput").reset;
         
-        e.preventDefault();
+      //  e.preventDefault();
       }
     }
   
