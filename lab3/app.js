@@ -96,14 +96,14 @@ class Note {
         note.add();
         note.saveToStorage();
 
-        this.reset
+        this.reset();
         e.preventDefault();
       }
     }
   
     reset() {
       // this function should reset the form / clear the text field
-      this.txtTodo.value= " ";
+      this.txtTodo.value= "";
       return false;
     }
   }
