@@ -3,7 +3,6 @@ class Note {
       this.title = title;
       // HINT🤩 this.element = this.createElement(title);
       this.element= this.createElement(title);
-  
     }
   
     createElement(title) {
@@ -11,6 +10,7 @@ class Note {
   
       // HINT🤩 newNote.addEventListener('click', this.remove.bind(newNote));
       newNote.addEventListener('click', this.remove.bind(newNote));
+      newNote.innerHTML= title;
       return newNote;
     }
   
@@ -41,6 +41,14 @@ class Note {
       // in this function, 'this' will refer to the current note element
       // .removeChild(this)
       // remove the item from screen and from localstorage
+    let taskList= document.querySelector("#taskList");
+
+    let deleteList= [...taskList.children].indexOf(this);
+    let todo= JSON.parse(localStorage.getItem('todoLijst'));
+    todo.splice(deleteList, 1);
+    localStorage.setItem('todoLijst', JSON.stringify(todo));
+
+    taskList.removeChild(this);
     }
   }
   
@@ -63,7 +71,16 @@ class Note {
     loadNotesFromStorage() {
       // HINT🤩
       // load all notes from storage here and add them to the screen
-      localStorage.getItem(this.txtTodo);
+      let notitieLijst= localStorage.getItem('todoLijst');
+      notitieLijst= JSON.parse(notitieLijst);
+
+      if (notitieLijst === null){
+        for(let i=0; i<notitieLijst.length; i++){
+          let notitie= new Note(notitieLijst[i]);
+          notitie.add();
+          console.log(i);
+        }
+      }
     }
   
     createNote(e) {
@@ -75,17 +92,19 @@ class Note {
       // if (e.key === "Enter")
      
       if (e.key === 'Enter') {
+        let note= new Note(this.txtTodo.value);
         note.add();
         note.saveToStorage();
-        document.querySelector("#taskInput").reset;
-        
-      //  e.preventDefault();
+
+        this.reset
+        e.preventDefault();
       }
     }
   
     reset() {
       // this function should reset the form / clear the text field
-      localStorage.removeItem(this.note)
+      this.txtTodo.value= " ";
+      return false;
     }
   }
   
