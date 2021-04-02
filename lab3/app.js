@@ -3,7 +3,7 @@ class Note {
       this.title = title;
       // HINT🤩 this.element = this.createElement(title);
       this.element= this.createElement(title);
-    
+  
     }
   
     createElement(title) {
@@ -17,7 +17,7 @@ class Note {
     add() {
       // HINT🤩
       // this function should append the note to the screen somehow
-      document.querySelector("#taskinput").appendChild(this.element);
+      document.querySelector("#taskList").appendChild(this.element);
     }
   
     saveToStorage() {
@@ -47,8 +47,8 @@ class Note {
       // read up on .bind() -> we need to pass the current meaning of this to the eventListener
       // when the app loads, we can show previously saved noted from localstorage
       // this.loadNotesFromStorage();
-      this.txtTodo= this.newNote;
-      this.txtTodo.addEventListener('keypress', this.createNote.bind(this.input));
+      this.txtTodo= document.querySelector("#taskInput");
+      this.txtTodo.addEventListener('keypress', this.createNote.bind(this));
       this.loadNotesFromStorage();
     }
   
@@ -64,10 +64,13 @@ class Note {
       // note.saveToStorage();
       // clear the text field with .reset in this class
       // if (e.key === "Enter")
-      note.add();
-      note.saveToStorage();
+     
       if (e.key === 'Enter') {
+        note.add();
+        note.saveToStorage();
         document.querySelector("#taskInput").reset;
+        
+        e.preventDefault();
       }
     }
   
