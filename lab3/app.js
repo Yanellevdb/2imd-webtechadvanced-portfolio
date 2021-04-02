@@ -2,7 +2,7 @@ class Note {
     constructor(title) {
       this.title = title;
       // HINT🤩 this.element = this.createElement(title);
-      this.element= this.createElement(title);
+      this.element= this.createElement(this.title);
     
     }
   
