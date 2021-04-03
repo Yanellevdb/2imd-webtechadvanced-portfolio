@@ -1,0 +1,27 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+body{
+    font-size: 17px;
+    font-weight: 500;
+}
+
+h1{
+    font-size: 20px;
+    font-weight: 600;
+    padding-top:10px;
+
+}
+
+#ad {
+    width: 336px;
+    height: 280px;
+    background-color: lightcoral;
+}
+
+img {
+    width: 20%;
+}
