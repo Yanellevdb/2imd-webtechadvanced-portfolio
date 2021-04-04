@@ -4,14 +4,14 @@ const getId= (req, res) => {
         status: "success",
         message:`GETTING message with ID ${id}`
     });
-}
+};
 
 const post= (req, res) => {
     res.json({
         status: "success",
         message:"POSTING a new message for user Pickachu"
     });
-}
+};
 
 const update= (req, res) => {
     let id= req.params.id;
@@ -19,7 +19,7 @@ const update= (req, res) => {
         status: "success",
         message:`UPDATING a message with ID ${id}`
     });
-}
+};
 
 const remove= (req, res) => {
     let id= req.params.id;
@@ -27,7 +27,7 @@ const remove= (req, res) => {
         status: "success",
         message:`DELETING a message with ID ${id}`
     });
-}
+};
 
 const getAll= (req, res) => {
     if(req.query.user){
@@ -43,7 +43,7 @@ const getAll= (req, res) => {
         message:"GETTING messages"
     });
     }
-}
+};
 
 module.exports.getId= getId;
 module.exports.post= post;

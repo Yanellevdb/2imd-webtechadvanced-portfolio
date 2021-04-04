@@ -1,10 +1,10 @@
+var PORT= process.env.PORT || 5000;
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
-const port= 3000;
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -12,7 +12,7 @@ var usersRouter = require('./routes/users');
 const app = express();
 
 const routeMessages = require('./routes/api/v1/messages');
-const pug = require('pug');
+//const pug = require('pug');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
