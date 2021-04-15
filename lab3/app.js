@@ -10,20 +10,24 @@ class Note {
   
       // HINT🤩 newNote.addEventListener('click', this.remove.bind(newNote));
       newNote.addEventListener('click', this.remove.bind(newNote));
-      newNote.innerHTML= title;
       return newNote;
     }
   
     add() {
       // HINT🤩
       // this function should append the note to the screen somehow
-      document.querySelector("#taskList").appendChild(this.element);
+      let note= document.querySelector("#taskList").appendChild(this.element);
+      note.innerHTML= this.title;
+
     }
   
     saveToStorage() {
       // HINT🤩
       // localStorage only supports strings, not arrays
       // if you want to store arrays, look at JSON.parse and JSON.stringify
+      localStorage.getItem('todoLijst');
+      console.log(localStorage.getItem('todoLijst'));
+
       if (localStorage.getItem('todoLijst') === null) {
         localStorage.setItem('todoLijst', JSON.stringify([this.title]));
       }
@@ -32,8 +36,8 @@ class Note {
         let todo= JSON.parse(localStorage.getItem('todoLijst'));
         todo.push(this.title);
         localStorage.setItem('todoLijst', JSON.stringify(todo));
-        console.log(todo);
       }
+      console.log(todo);
     }
   
     remove() {
@@ -42,13 +46,14 @@ class Note {
       // .removeChild(this)
       // remove the item from screen and from localstorage
     let taskList= document.querySelector("#taskList");
+    let deleteList= [...taskList.childNodes].indexOf(this);
 
-    let deleteList= [...taskList.children].indexOf(this);
+    taskList.removeChild(this);
+
     let todo= JSON.parse(localStorage.getItem('todoLijst'));
     todo.splice(deleteList, 1);
     localStorage.setItem('todoLijst', JSON.stringify(todo));
 
-    taskList.removeChild(this);
     }
   }
   
@@ -71,14 +76,14 @@ class Note {
     loadNotesFromStorage() {
       // HINT🤩
       // load all notes from storage here and add them to the screen
-      let notitieLijst= localStorage.getItem('todoLijst');
-      notitieLijst= JSON.parse(notitieLijst);
-
-      if (notitieLijst === null){
+     // let notitieLijst= localStorage.getItem('todoLijst');
+     // notitieLijst= JSON.parse(notitieLijst);
+      if (localStorage.getItem('todoLijst') !== null){
+        let notitieLijst= JSON.parse(localStorage.getItem('todoLijst'));
         for(let i=0; i<notitieLijst.length; i++){
           let notitie= new Note(notitieLijst[i]);
           notitie.add();
-          console.log(i);
+          //console.log(i);
         }
       }
     }
@@ -92,19 +97,20 @@ class Note {
       // if (e.key === "Enter")
      
       if (e.key === 'Enter') {
+        e.preventDefault();
+
         let note= new Note(this.txtTodo.value);
         note.add();
         note.saveToStorage();
 
         this.reset();
-        e.preventDefault();
       }
     }
   
     reset() {
       // this function should reset the form / clear the text field
       this.txtTodo.value= "";
-      return false;
+     // return false;
     }
   }
   
